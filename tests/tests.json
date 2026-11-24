@@ -1,0 +1,91 @@
+[
+  {
+    "name": "Browse the VYRA collection and filter looks",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "campaign homepage",
+      "collection browsing",
+      "catalogue search",
+      "search empty state"
+    ],
+    "description": "Checks the editorial homepage, collection cards, and search results.",
+    "steps": [
+      "Open the VYRA homepage",
+      "Open search and enter Solstice",
+      "Search for a term with no matches"
+    ],
+    "expected": "The collection filters to the matching look and shows a clear empty state for an unmatched search."
+  },
+  {
+    "name": "Submit a customer availability request",
+    "viewport": "mobile",
+    "covers": [
+      "responsive mobile layout",
+      "bag add and remove",
+      "bag persistence after refresh",
+      "checkout form validation",
+      "customer order persistence",
+      "request confirmation"
+    ],
+    "description": "Checks that a customer can request availability for selected looks and receives a request reference.",
+    "steps": [
+      "Open the collection on a mobile viewport",
+      "Add a look to the bag",
+      "Refresh the page and reopen the bag",
+      "Enter valid contact and delivery details",
+      "Submit the availability request"
+    ],
+    "expected": "The selected look remains in the bag after refresh, the request is saved, and the customer sees a confirmation reference."
+  },
+  {
+    "name": "Reject invalid customer request details",
+    "viewport": "desktop",
+    "covers": [
+      "required customer fields",
+      "server-side order validation",
+      "invalid request rejection"
+    ],
+    "description": "Checks that incomplete contact and delivery details cannot create an order request.",
+    "steps": [
+      "Add a look to the bag",
+      "Open the bag",
+      "Leave the phone number or delivery address empty",
+      "Submit the request"
+    ],
+    "expected": "The browser blocks the incomplete form and no request is created."
+  },
+  {
+    "name": "Restrict order management to the app owner",
+    "viewport": "desktop",
+    "covers": [
+      "owner authentication",
+      "owner-only order access",
+      "order status management"
+    ],
+    "description": "Checks that the private order dashboard requires owner sign-in and lets the owner update request status.",
+    "steps": [
+      "Open the Owner link while signed out",
+      "Attempt to view orders",
+      "Sign in with the AppDeploy app-owner account",
+      "Change one request from New to Contacted"
+    ],
+    "expected": "Signed-out visitors cannot read orders; the owner can view requests and update their status."
+  },
+  {
+    "name": "Preserve product and order request details",
+    "viewport": "desktop",
+    "covers": [
+      "multiple selected looks",
+      "order item detail storage",
+      "owner order history"
+    ],
+    "description": "Checks that a request stores each selected look and the supplied customer details for later follow-up.",
+    "steps": [
+      "Add two different looks to the bag",
+      "Submit an availability request with customer details",
+      "Sign in as the owner and open the order dashboard"
+    ],
+    "expected": "The dashboard shows the customer's contact details and both requested looks."
+  }
+]
