@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://vyra-3t9rsu.v2.appdeploy.ai/api/:path*"
+      "destination": "https://api-v2.appdeploy.ai/app/vyra-3t9rsu/api/:path*"
     }
   ]
 }
