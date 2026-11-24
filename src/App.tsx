@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { api, auth } from '@appdeploy/client';
+import { api, auth } from './api';
 import {
   ArrowRight, ArrowUpRight, ChevronDown, Heart, Menu, Search, ShoppingBag,
   X, Diamond, ShieldCheck, Globe2, Trash2, LockKeyhole, LogOut
