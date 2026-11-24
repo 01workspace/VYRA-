@@ -138,6 +138,7 @@ function App() {
         <nav className={menuOpen ? 'nav nav-open' : 'nav'}>
           <a href="#collection" onClick={() => setMenuOpen(false)}>SHOP <ChevronDown size={12}/></a>
           <a href="#campaign" onClick={() => setMenuOpen(false)}>CAMPAIGN</a>
+          <a href="#occasion-lookbook" onClick={() => setMenuOpen(false)}>LOOKBOOK</a>
           <a href="#about" onClick={() => setMenuOpen(false)}>ABOUT</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>CONTACT</a>
         </nav>
@@ -161,6 +162,20 @@ function App() {
             <img src={item.image} alt={item.alt} style={{objectPosition:'50% 12%'}}/>
             <div className="editorial-overlay"><p>{item.caption}</p><button onClick={() => scrollTo('collection')}>{item.action} <ArrowRight size={13}/></button></div>
           </article>)}
+        </section>
+
+        <section className="occasion-lookbook" id="occasion-lookbook" aria-labelledby="occasion-title">
+          <div className="occasion-copy">
+            <p className="eyebrow">VYRA · OCCASIONWEAR STUDY 001</p>
+            <h2 id="occasion-title">CHAMPAGNE<br/>ROYALE</h2>
+            <p className="occasion-description">A hand-beaded statement look for wedding celebrations, garden parties and golden-hour evenings.</p>
+            <div className="occasion-details"><span>THE OCCASION EDIT</span><span>CHAMPAGNE · HAND-BEADED</span></div>
+            <a className="occasion-link" href="#contact">ENQUIRE ABOUT THIS LOOK <ArrowRight size={14}/></a>
+          </div>
+          <figure className="occasion-image">
+            <img src="/resources/vyra-champagne-royale.svg" alt="VYRA Champagne Royale occasionwear concept, featuring intricate champagne-toned beadwork" />
+            <figcaption>CHAMPAGNE ROYALE · EDITORIAL CONCEPT</figcaption>
+          </figure>
         </section>
 
         <section className="collection-section" id="collection">
