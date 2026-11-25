@@ -15,10 +15,16 @@ const looks: Look[] = [
   { name: 'Ivory Hour', line: 'THE LIGHT STUDY', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model wearing an ivory VYRA fashion look beside a pool' }
 ];
 const heroSlides = [
-  { image: '/resources/vyra-01-black-beach.jpg', alt: 'Adult model in a black VYRA fashion look on the beach', label: 'THE NOIR EDIT', caption: 'CONFIDENCE IN EVERY DETAIL.' },
-  { image: '/resources/vyra-02-red-coast.jpg', alt: 'Adult model in a rich red VYRA fashion look on the coast', label: 'THE AFTERGLOW EDIT', caption: 'MAKE YOUR ENTRANCE YOURS.' },
-  { image: '/resources/vyra-03-blue-beach.jpg', alt: 'Adult model in a blue VYRA fashion look beside the sea', label: 'THE TIDAL EDIT', caption: 'YOUR STYLE. YOUR FREEDOM.' },
-  { image: '/resources/vyra-04-emerald-tropical.jpg', alt: 'Adult model in an emerald VYRA fashion look in a tropical setting', label: 'THE GARDEN EDIT', caption: 'MADE TO BE REMEMBERED.' }
+  { alt: 'Black sculpted VYRA look photographed at the shoreline', label: 'THE NOIR EDIT', caption: 'CONFIDENCE IN EVERY DETAIL.' },
+  { alt: 'Three VYRA swim looks in burgundy, black and emerald', label: 'THE COLOR STORY', caption: 'THREE MOODS. ONE SIGNATURE.' },
+  { alt: 'A royal plum VYRA evening look at a celebration', label: 'THE ROYAL EDIT', caption: 'DRESS FOR THE MOMENT.' },
+  { alt: 'A champagne embellished VYRA couture look', label: 'THE CHAMPAGNE EDIT', caption: 'DETAILS THAT CATCH THE LIGHT.' },
+  { alt: 'A champagne VYRA look at an evening celebration', label: 'THE AFTER HOURS EDIT', caption: 'AN ENTRANCE THAT LINGERS.' },
+  { alt: 'A black embellished VYRA evening look', label: 'THE NOIR DETAIL', caption: 'QUIETLY UNFORGETTABLE.' },
+  { alt: 'An embellished black VYRA festive ensemble', label: 'THE EMBELLISHED EDIT', caption: 'MADE TO BE NOTICED.' },
+  { alt: 'A plum VYRA festive ensemble', label: 'THE PLUM EDIT', caption: 'A LITTLE MORE DRAMA.' },
+  { alt: 'A champagne VYRA couture look', label: 'THE GOLDEN EDIT', caption: 'GLOW IN EVERY ROOM.' },
+  { alt: 'A black lace VYRA evening ensemble', label: 'THE BLACK LACE EDIT', caption: 'CONFIDENCE AFTER DARK.' }
 ];
 const gallery = [
   { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA fashion editorial on a sunlit coast', caption: 'MADE FOR YOUR KIND OF CONFIDENCE.', action: 'DISCOVER THE EDIT' },
@@ -33,6 +39,13 @@ function BrandMark() {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHero, setActiveHero] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveHero(current => (current + 1) % heroSlides.length);
+    }, 5500);
+    return () => window.clearInterval(timer);
+  }, []);
   const [searchOpen, setSearchOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [saved, setSaved] = useState<number[]>([]);
@@ -158,13 +171,13 @@ function App() {
 
       <main>
         <section className="hero hero-slider" aria-label="VYRA campaign">
-          {heroSlides.map((slide, index) => <img
-            key={slide.image}
+          {heroSlides.map((slide, index) => <div
+            key={slide.label}
             className={index === activeHero ? 'hero-image hero-slide active' : 'hero-image hero-slide'}
-            src={slide.image}
-            alt={slide.alt}
+            role="img"
+            aria-label={slide.alt}
             aria-hidden={index !== activeHero}
-            style={{objectPosition:'50% 42%'}}
+            style={{backgroundPosition: `${index % 2 ? 79.8 : 20.2}% ${Math.floor(index / 2) * 25}%`}}
           />)}
           <div className="hero-shade"/>
           <div className="hero-copy"><div className="hero-monogram">V</div><h1>VYRA</h1><p>FEEL CONFIDENT. FEEL YOU.</p><span className="fine-rule"/><span className="hero-slide-label">{heroSlides[activeHero].label}</span><button className="outline-button" onClick={() => scrollTo('collection')}>EXPLORE THE COLLECTION <ArrowRight size={15}/></button></div>
@@ -172,7 +185,7 @@ function App() {
           <button className="hero-arrow hero-arrow-right" aria-label="Next campaign image" onClick={() => setActiveHero(current => (current + 1) % heroSlides.length)}><ChevronRight/></button>
           <div className="hero-index">{String(activeHero + 1).padStart(2,'0')} <span>—</span> {String(heroSlides.length).padStart(2,'0')}</div>
           <div className="hero-caption">{heroSlides[activeHero].caption} <span>·</span> VYRA CAMPAIGN</div>
-          <div className="hero-dots" role="group" aria-label="Choose campaign image">{heroSlides.map((slide,index) => <button key={slide.image} className={index === activeHero ? 'active' : ''} aria-label={'Show campaign image ' + (index + 1)} aria-pressed={index === activeHero} onClick={() => setActiveHero(index)}/>)}</div>
+          <div className="hero-dots" role="group" aria-label="Choose campaign image">{heroSlides.map((slide,index) => <button key={slide.label} className={index === activeHero ? 'active' : ''} aria-label={'Show campaign image ' + (index + 1)} aria-pressed={index === activeHero} onClick={() => setActiveHero(index)}/>)}</div>
         </section>
 
         <section className="editorial-grid" id="campaign">
