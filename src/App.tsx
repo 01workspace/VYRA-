@@ -9,15 +9,15 @@ type Look = { name: string; line: string; colour: string; image: string; alt: st
 type Order = { id: string; name: string; phone: string; city: string; address: string; notes?: string; items: { name: string; colour: string }[]; status: string; createdAt: string };
 
 const looks: Look[] = [
-  { name: 'Solstice', line: 'SUNLIT GODDESS', colour: 'Onyx', image: '/resources/vyra-07-black-studio.jpg', alt: 'Adult model wearing a black VYRA swimwear look in a studio editorial' },
-  { name: 'Afterglow', line: 'BARE CONFIDENCE', colour: 'Lagoon', image: '/resources/vyra-09-blue-rocky-shore.jpg', alt: 'Adult model in blue swimwear on a rocky shoreline' },
-  { name: 'Siren', line: 'MIDNIGHT TEMPTRESS', colour: 'Emerald', image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Adult model in emerald swimwear in a tropical garden' },
-  { name: 'Daydream', line: 'BOLD DESIRE', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model in a white swimwear look beside a pool' }
+  { name: 'Noir Muse', line: 'THE SCULPTED EDIT', colour: 'Midnight', image: '/resources/vyra-07-black-studio.jpg', alt: 'Adult model wearing a sculptural black VYRA fashion look in a studio editorial' },
+  { name: 'Tidal Form', line: 'THE COASTAL EDIT', colour: 'Lagoon', image: '/resources/vyra-09-blue-rocky-shore.jpg', alt: 'Adult model wearing a blue VYRA fashion look on a rocky shoreline' },
+  { name: 'Garden Muse', line: 'THE BOTANICAL EDIT', colour: 'Emerald', image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Adult model wearing an emerald VYRA fashion look in a tropical garden' },
+  { name: 'Ivory Hour', line: 'THE LIGHT STUDY', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model wearing an ivory VYRA fashion look beside a pool' }
 ];
 const gallery = [
-  { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA swimwear editorial on a sunlit coast', caption: 'FREEDOM LOOKS GOOD ON YOU.', action: 'DISCOVER THE EDIT' },
-  { image: '/resources/vyra-03-blue-beach.jpg', alt: 'Blue swimwear editorial by the sea', caption: 'WEAR WHAT YOU WANT.', action: 'SHOP THE MOOD' },
-  { image: '/resources/vyra-04-emerald-tropical.jpg', alt: 'Emerald swimwear editorial in a tropical setting', caption: 'OWN YOUR OWN SUMMER.', action: 'EXPLORE VYRA' }
+  { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA swimwear editorial on a sunlit coast', caption: 'MADE FOR YOUR KIND OF CONFIDENCE.', action: 'DISCOVER THE EDIT' },
+  { image: '/resources/vyra-03-blue-beach.jpg', alt: 'Blue swimwear editorial by the sea', caption: 'YOUR STYLE HAS NO RULEBOOK.', action: 'SHOP THE MOOD' },
+  { image: '/resources/vyra-04-emerald-tropical.jpg', alt: 'Emerald swimwear editorial in a tropical setting', caption: 'MAKE EVERY LOOK YOURS.', action: 'EXPLORE VYRA' }
 ];
 
 function BrandMark() {
@@ -153,7 +153,7 @@ function App() {
         <section className="hero" aria-label="VYRA campaign">
           <img className="hero-image" src="/resources/vyra-01-black-beach.jpg" alt="Adult model in a black VYRA swimwear look on the beach" style={{objectPosition:'50% 42%'}}/>
           <div className="hero-shade"/>
-          <div className="hero-copy"><div className="hero-monogram">V</div><h1>VYRA</h1><p>NOTHING IS HIDDEN ANYMORE.</p><span className="fine-rule"/><button className="outline-button" onClick={() => scrollTo('collection')}>EXPLORE THE COLLECTION <ArrowRight size={15}/></button></div>
+          <div className="hero-copy"><div className="hero-monogram">V</div><h1>VYRA</h1><p>FEEL CONFIDENT. FEEL YOU.</p><span className="fine-rule"/><button className="outline-button" onClick={() => scrollTo('collection')}>EXPLORE THE COLLECTION <ArrowRight size={15}/></button></div>
           <div className="hero-index">01 <span>—</span> 04</div><div className="hero-caption">THE FREEDOM EDITION <span>·</span> VYRA CAMPAIGN</div>
         </section>
 
@@ -166,9 +166,9 @@ function App() {
 
         <section className="occasion-lookbook" id="occasion-lookbook" aria-labelledby="occasion-title">
           <div className="occasion-copy">
-            <p className="eyebrow">VYRA · OCCASIONWEAR STUDY 001</p>
-            <h2 id="occasion-title">CHAMPAGNE<br/>ROYALE</h2>
-            <p className="occasion-description">A hand-beaded statement look for wedding celebrations, garden parties and golden-hour evenings.</p>
+            <p className="eyebrow">VYRA · THE DESIGN JOURNAL</p>
+            <h2 id="occasion-title">THE ART OF<br/>BEING YOU</h2>
+            <p className="occasion-description">A considered approach to expressive fashion: distinctive silhouettes, thoughtful coverage and details that make a look unmistakably yours.</p>
             <div className="occasion-details"><span>THE OCCASION EDIT</span><span>CHAMPAGNE · HAND-BEADED</span></div>
             <a className="occasion-link" href="#contact">ENQUIRE ABOUT THIS LOOK <ArrowRight size={14}/></a>
           </div>
@@ -179,7 +179,7 @@ function App() {
         </section>
 
         <section className="collection-section" id="collection">
-          <div className="section-heading"><div><p className="eyebrow">THE VYRA EDIT · 001</p><h2>THE COLLECTION</h2></div><p>Four moods. One state of mind.<br/>Find the look that feels like you.</p></div>
+          <div className="section-heading"><div><p className="eyebrow">VYRA · THE SIGNATURE EDIT</p><h2>THE COLLECTION</h2></div><p>Distinctive pieces. Thoughtful coverage.<br/>Find the design that feels like you.</p></div>
           <div className="collection-tools"><span>{visibleLooks.length} EDITORIAL LOOKS</span><div className="collection-actions"><button onClick={() => setSearchOpen(v => !v)}><Search size={14}/> SEARCH LOOKS</button><span>AVAILABILITY ON REQUEST</span></div></div>
           <div className="product-grid">
             {visibleLooks.map(item => {
@@ -199,13 +199,13 @@ function App() {
 
         <section className="manifesto" id="about">
           <img src="/resources/vyra-11-purple-sunlit.jpg" alt="Adult model in a purple VYRA swimwear editorial" style={{objectPosition:'50% center'}}/>
-          <div className="manifesto-shade"/><div className="manifesto-copy"><p className="eyebrow">A DIFFERENT KIND OF DRESS CODE</p><h2>A BIKINI<br/>IS AN OUTFIT.</h2><p>WEAR IT YOUR WAY.<br/>OWN YOUR CONFIDENCE.</p><button onClick={() => scrollTo('collection')}>DISCOVER VYRA <ArrowRight size={14}/></button></div>
+          <div className="manifesto-shade"/><div className="manifesto-copy"><p className="eyebrow">THE VYRA POINT OF VIEW</p><h2>FEEL<br/>UNAPOLOGETIC.</h2><p>YOUR BODY. YOUR STYLE.<br/>YOUR FREEDOM.</p><button onClick={() => scrollTo('collection')}>DISCOVER VYRA <ArrowRight size={14}/></button></div>
         </section>
 
-        <section className="values"><div><Diamond/><span>DESIGNED FOR EXPRESSION</span></div><div><ShieldCheck/><span>CONFIDENCE WITHOUT APOLOGY</span></div><div><Globe2/><span>FREEDOM OF PERSONAL STYLE</span></div><div><Heart/><span>BODY POSITIVE</span></div></section>
+        <section className="values"><div><Diamond/><span>DESIGNED FOR SELF-EXPRESSION</span></div><div><ShieldCheck/><span>CONFIDENCE, YOUR WAY</span></div><div><Globe2/><span>FREEDOM OF PERSONAL STYLE</span></div><div><Heart/><span>MADE TO FEEL LIKE YOU</span></div></section>
       </main>
 
-      <footer className="footer" id="contact"><BrandMark/><p>NOTHING IS HIDDEN ANYMORE.</p><span className="footer-contact">CONTACT DETAILS TO BE ANNOUNCED</span><span>© VYRA · THE FREEDOM EDITION</span><button className="owner-link" onClick={openAdmin}><LockKeyhole size={12}/> OWNER</button></footer>
+      <footer className="footer" id="contact"><BrandMark/><p>FEEL CONFIDENT. FEEL YOU.</p><span className="footer-contact">DESIGNED FOR YOUR OWN KIND OF EXPRESSION</span><span>© VYRA · THE FREEDOM EDITION</span><button className="owner-link" onClick={openAdmin}><LockKeyhole size={12}/> OWNER</button></footer>
 
       {checkoutOpen && <div className="modal-backdrop" role="presentation" onMouseDown={e => {if (e.target === e.currentTarget) setCheckoutOpen(false);}}>
         <section className="store-modal" role="dialog" aria-modal="true" aria-labelledby="bag-title">
