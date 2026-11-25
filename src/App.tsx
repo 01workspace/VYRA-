@@ -13,6 +13,7 @@ const looks: Look[] = [
   { name: 'Tidal Form', line: 'THE COASTAL EDIT', colour: 'Lagoon', image: '/resources/vyra-09-blue-rocky-shore.jpg', alt: 'Adult model wearing a blue VYRA fashion look on a rocky shoreline' },
   { name: 'Garden Muse', line: 'THE BOTANICAL EDIT', colour: 'Emerald', image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Adult model wearing an emerald VYRA fashion look in a tropical garden' },
   { name: 'Ivory Hour', line: 'THE LIGHT STUDY', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model wearing an ivory VYRA fashion look beside a pool' },
+  { name: 'Noir Royale', line: 'THE GOLDEN HOUR SWIM EDIT', colour: 'Black & Gold', image: '/resources/noir-royale-product.webp', alt: 'Noir Royale black bikini with polished gold ring hardware, shown from front, back and detail angles beside a pool at golden hour' },
   { name: 'Champagne Royale', line: 'THE SIGNATURE EMBELLISHED EDIT', colour: 'Champagne Gold', image: '/resources/vyra-champagne-royale.svg', alt: 'Champagne Royale, a VYRA occasion look with intricate champagne-toned embellishment' }
 ];
 const heroSlides = [
@@ -226,7 +227,7 @@ function App() {
             {visibleLooks.map(item => {
               const index = looks.indexOf(item);
               return <article className="product-card" key={item.name}>
-                <div className="product-photo"><img src={item.image} alt={item.alt} style={{objectPosition:'50% 12%'}}/>
+                <div className="product-photo" style={item.name === 'Noir Royale' ? { height: 'auto', aspectRatio: '1 / 1' } : undefined}><img src={item.image} alt={item.alt} style={item.name === 'Noir Royale' ? { objectFit: 'contain', objectPosition: 'center', transform: 'none' } : {objectPosition:'50% 12%'}}/>
                   <button className={saved.includes(index) ? 'heart saved' : 'heart'} onClick={() => setSaved(current => current.includes(index) ? current.filter(n => n !== index) : [...current,index])} aria-label={saved.includes(index) ? 'Remove saved look' : 'Save look'}><Heart size={18} fill={saved.includes(index) ? 'currentColor' : 'none'}/></button>
                   <button className="quick-view" onClick={() => addToBag(item.name)}>ADD THIS LOOK <ArrowUpRight size={14}/></button>
                 </div>
