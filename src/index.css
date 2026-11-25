@@ -451,3 +451,48 @@ body, .site { background: #f8f1ed; color: #3a1826; }
 .hero-slider .hero-dots {
   z-index: 3;
 }
+
+
+/*
+  The campaign photos are small portrait files (~250x380). Stretching them
+  across the full-width banner upscaled them ~6x and cropped heads and feet,
+  so each slide now shows the photo sharp at its native aspect ratio over a
+  soft blurred fill of the same image.
+*/
+.hero-slider { color: #fbf4ef; }
+.hero-slider .hero-slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero-slide-backdrop {
+  position: absolute;
+  inset: -60px;
+  width: calc(100% + 120px);
+  height: calc(100% + 120px);
+  object-fit: cover;
+  filter: blur(34px) saturate(1.15) brightness(.62);
+}
+.hero-slide-photo {
+  position: absolute;
+  top: 46%;
+  right: clamp(84px, 11vw, 190px);
+  transform: translateY(-50%);
+  height: 80%;
+  max-height: 540px;
+  width: auto;
+  aspect-ratio: 250 / 380;
+  object-fit: cover;
+  border: 1px solid rgba(255, 244, 239, .35);
+  box-shadow: 0 30px 60px -20px rgba(20, 6, 12, .65);
+}
+@media (max-width: 640px) {
+  .hero-slide-photo {
+    top: 22px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 48%;
+  }
+  .hero-slider .hero-monogram { display: none; }
+}
