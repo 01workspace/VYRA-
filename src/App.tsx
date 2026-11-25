@@ -12,7 +12,8 @@ const looks: Look[] = [
   { name: 'Noir Muse', line: 'THE SCULPTED EDIT', colour: 'Midnight', image: '/resources/vyra-07-black-studio.jpg', alt: 'Adult model wearing a sculptural black VYRA fashion look in a studio editorial' },
   { name: 'Tidal Form', line: 'THE COASTAL EDIT', colour: 'Lagoon', image: '/resources/vyra-09-blue-rocky-shore.jpg', alt: 'Adult model wearing a blue VYRA fashion look on a rocky shoreline' },
   { name: 'Garden Muse', line: 'THE BOTANICAL EDIT', colour: 'Emerald', image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Adult model wearing an emerald VYRA fashion look in a tropical garden' },
-  { name: 'Ivory Hour', line: 'THE LIGHT STUDY', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model wearing an ivory VYRA fashion look beside a pool' }
+  { name: 'Ivory Hour', line: 'THE LIGHT STUDY', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model wearing an ivory VYRA fashion look beside a pool' },
+  { name: 'Champagne Royale', line: 'THE SIGNATURE EMBELLISHED EDIT', colour: 'Champagne Gold', image: '/resources/vyra-champagne-royale.svg', alt: 'Champagne Royale, a VYRA occasion look with intricate champagne-toned embellishment' }
 ];
 const heroSlides = [
   { alt: 'Black sculpted VYRA look photographed at the shoreline', label: 'THE NOIR EDIT', caption: 'CONFIDENCE IN EVERY DETAIL.' },
