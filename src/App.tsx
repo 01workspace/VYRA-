@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api, auth } from './api';
 import {
-  ArrowRight, ArrowUpRight, ChevronDown, Heart, Menu, Search, ShoppingBag,
+  ArrowRight, ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, Heart, Menu, Search, ShoppingBag,
   X, Diamond, ShieldCheck, Globe2, Trash2, LockKeyhole, LogOut
 } from 'lucide-react';
 
@@ -14,6 +14,12 @@ const looks: Look[] = [
   { name: 'Garden Muse', line: 'THE BOTANICAL EDIT', colour: 'Emerald', image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Adult model wearing an emerald VYRA fashion look in a tropical garden' },
   { name: 'Ivory Hour', line: 'THE LIGHT STUDY', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model wearing an ivory VYRA fashion look beside a pool' }
 ];
+const heroSlides = [
+  { image: '/resources/vyra-01-black-beach.jpg', alt: 'Adult model in a black VYRA fashion look on the beach', label: 'THE NOIR EDIT', caption: 'CONFIDENCE IN EVERY DETAIL.' },
+  { image: '/resources/vyra-02-red-coast.jpg', alt: 'Adult model in a rich red VYRA fashion look on the coast', label: 'THE AFTERGLOW EDIT', caption: 'MAKE YOUR ENTRANCE YOURS.' },
+  { image: '/resources/vyra-03-blue-beach.jpg', alt: 'Adult model in a blue VYRA fashion look beside the sea', label: 'THE TIDAL EDIT', caption: 'YOUR STYLE. YOUR FREEDOM.' },
+  { image: '/resources/vyra-04-emerald-tropical.jpg', alt: 'Adult model in an emerald VYRA fashion look in a tropical setting', label: 'THE GARDEN EDIT', caption: 'MADE TO BE REMEMBERED.' }
+];
 const gallery = [
   { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA fashion editorial on a sunlit coast', caption: 'MADE FOR YOUR KIND OF CONFIDENCE.', action: 'DISCOVER THE EDIT' },
   { image: '/resources/vyra-03-blue-beach.jpg', alt: 'Blue fashion editorial by the sea', caption: 'YOUR STYLE HAS NO RULEBOOK.', action: 'SHOP THE MOOD' },
@@ -25,7 +31,7 @@ function BrandMark() {
 }
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);\n  const [activeHero, setActiveHero] = useState(0);
   const [searchOpen, setSearchOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [saved, setSaved] = useState<number[]>([]);
@@ -150,11 +156,22 @@ function App() {
       {searchOpen && <div className="searchbar"><Search size={17}/><input autoFocus value={search} onChange={e => setSearch(e.target.value)} placeholder="Search the VYRA edit..."/><button onClick={() => {setSearch('');setSearchOpen(false);}}><X size={17}/></button></div>}
 
       <main>
-        <section className="hero" aria-label="VYRA campaign">
-          <img className="hero-image" src="/resources/vyra-01-black-beach.jpg" alt="Adult model in a black VYRA fashion look on the beach" style={{objectPosition:'50% 42%'}}/>
+        <section className="hero hero-slider" aria-label="VYRA campaign">
+          {heroSlides.map((slide, index) => <img
+            key={slide.image}
+            className={index === activeHero ? 'hero-image hero-slide active' : 'hero-image hero-slide'}
+            src={slide.image}
+            alt={slide.alt}
+            aria-hidden={index !== activeHero}
+            style={{objectPosition:'50% 42%'}}
+          />)}
           <div className="hero-shade"/>
-          <div className="hero-copy"><div className="hero-monogram">V</div><h1>VYRA</h1><p>FEEL CONFIDENT. FEEL YOU.</p><span className="fine-rule"/><button className="outline-button" onClick={() => scrollTo('collection')}>EXPLORE THE COLLECTION <ArrowRight size={15}/></button></div>
-          <div className="hero-index">01 <span>—</span> 04</div><div className="hero-caption">THE FREEDOM EDITION <span>·</span> VYRA CAMPAIGN</div>
+          <div className="hero-copy"><div className="hero-monogram">V</div><h1>VYRA</h1><p>FEEL CONFIDENT. FEEL YOU.</p><span className="fine-rule"/><span className="hero-slide-label">{heroSlides[activeHero].label}</span><button className="outline-button" onClick={() => scrollTo('collection')}>EXPLORE THE COLLECTION <ArrowRight size={15}/></button></div>
+          <button className="hero-arrow hero-arrow-left" aria-label="Previous campaign image" onClick={() => setActiveHero(current => (current - 1 + heroSlides.length) % heroSlides.length)}><ChevronLeft/></button>
+          <button className="hero-arrow hero-arrow-right" aria-label="Next campaign image" onClick={() => setActiveHero(current => (current + 1) % heroSlides.length)}><ChevronRight/></button>
+          <div className="hero-index">{String(activeHero + 1).padStart(2,'0')} <span>—</span> {String(heroSlides.length).padStart(2,'0')}</div>
+          <div className="hero-caption">{heroSlides[activeHero].caption} <span>·</span> VYRA CAMPAIGN</div>
+          <div className="hero-dots" role="group" aria-label="Choose campaign image">{heroSlides.map((slide,index) => <button key={slide.image} className={index === activeHero ? 'active' : ''} aria-label={'Show campaign image ' + (index + 1)} aria-pressed={index === activeHero} onClick={() => setActiveHero(index)}/>)}</div>
         </section>
 
         <section className="editorial-grid" id="campaign">
