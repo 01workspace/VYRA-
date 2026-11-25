@@ -15,9 +15,9 @@ const looks: Look[] = [
   { name: 'Ivory Hour', line: 'THE LIGHT STUDY', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model wearing an ivory VYRA fashion look beside a pool' }
 ];
 const gallery = [
-  { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA swimwear editorial on a sunlit coast', caption: 'MADE FOR YOUR KIND OF CONFIDENCE.', action: 'DISCOVER THE EDIT' },
-  { image: '/resources/vyra-03-blue-beach.jpg', alt: 'Blue swimwear editorial by the sea', caption: 'YOUR STYLE HAS NO RULEBOOK.', action: 'SHOP THE MOOD' },
-  { image: '/resources/vyra-04-emerald-tropical.jpg', alt: 'Emerald swimwear editorial in a tropical setting', caption: 'MAKE EVERY LOOK YOURS.', action: 'EXPLORE VYRA' }
+  { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA fashion editorial on a sunlit coast', caption: 'MADE FOR YOUR KIND OF CONFIDENCE.', action: 'DISCOVER THE EDIT' },
+  { image: '/resources/vyra-03-blue-beach.jpg', alt: 'Blue fashion editorial by the sea', caption: 'YOUR STYLE HAS NO RULEBOOK.', action: 'SHOP THE MOOD' },
+  { image: '/resources/vyra-04-emerald-tropical.jpg', alt: 'Emerald fashion editorial in a tropical setting', caption: 'MAKE EVERY LOOK YOURS.', action: 'EXPLORE VYRA' }
 ];
 
 function BrandMark() {
@@ -151,7 +151,7 @@ function App() {
 
       <main>
         <section className="hero" aria-label="VYRA campaign">
-          <img className="hero-image" src="/resources/vyra-01-black-beach.jpg" alt="Adult model in a black VYRA swimwear look on the beach" style={{objectPosition:'50% 42%'}}/>
+          <img className="hero-image" src="/resources/vyra-01-black-beach.jpg" alt="Adult model in a black VYRA fashion look on the beach" style={{objectPosition:'50% 42%'}}/>
           <div className="hero-shade"/>
           <div className="hero-copy"><div className="hero-monogram">V</div><h1>VYRA</h1><p>FEEL CONFIDENT. FEEL YOU.</p><span className="fine-rule"/><button className="outline-button" onClick={() => scrollTo('collection')}>EXPLORE THE COLLECTION <ArrowRight size={15}/></button></div>
           <div className="hero-index">01 <span>—</span> 04</div><div className="hero-caption">THE FREEDOM EDITION <span>·</span> VYRA CAMPAIGN</div>
@@ -168,13 +168,13 @@ function App() {
           <div className="occasion-copy">
             <p className="eyebrow">VYRA · THE DESIGN JOURNAL</p>
             <h2 id="occasion-title">THE ART OF<br/>BEING YOU</h2>
-            <p className="occasion-description">A considered approach to expressive fashion: distinctive silhouettes, thoughtful coverage and details that make a look unmistakably yours.</p>
-            <div className="occasion-details"><span>THE OCCASION EDIT</span><span>CHAMPAGNE · HAND-BEADED</span></div>
-            <a className="occasion-link" href="#contact">ENQUIRE ABOUT THIS LOOK <ArrowRight size={14}/></a>
+            <p className="occasion-description">At VYRA, we believe every woman deserves the freedom to express herself through fashion. We create distinctive designs that celebrate individuality, confidence and personal style — balancing bold expression, thoughtful coverage and comfort.</p>
+            <div className="occasion-details"><span>THE VYRA DESIGN LANGUAGE</span><span>EXPRESSION · COVERAGE · COMFORT</span></div>
+            <a className="occasion-link" href="#contact">DISCOVER THE VYRA MISSION <ArrowRight size={14}/></a>
           </div>
           <figure className="occasion-image">
             <img src="/resources/vyra-champagne-royale.svg" alt="VYRA Champagne Royale occasionwear concept, featuring intricate champagne-toned beadwork" />
-            <figcaption>CHAMPAGNE ROYALE · EDITORIAL CONCEPT</figcaption>
+            <figcaption>VYRA · THE SIGNATURE POINT OF VIEW</figcaption>
           </figure>
         </section>
 
@@ -198,7 +198,7 @@ function App() {
         </section>
 
         <section className="manifesto" id="about">
-          <img src="/resources/vyra-11-purple-sunlit.jpg" alt="Adult model in a purple VYRA swimwear editorial" style={{objectPosition:'50% center'}}/>
+          <img src="/resources/vyra-11-purple-sunlit.jpg" alt="Adult model in a purple VYRA fashion editorial" style={{objectPosition:'50% center'}}/>
           <div className="manifesto-shade"/><div className="manifesto-copy"><p className="eyebrow">THE VYRA POINT OF VIEW</p><h2>FEEL<br/>UNAPOLOGETIC.</h2><p>YOUR BODY. YOUR STYLE.<br/>YOUR FREEDOM.</p><button onClick={() => scrollTo('collection')}>DISCOVER VYRA <ArrowRight size={14}/></button></div>
         </section>
 
