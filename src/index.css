@@ -348,3 +348,82 @@ body, .site { background: #f8f1ed; color: #3a1826; }
   .hero { min-height: 560px; }
   .hero-copy { text-shadow: 0 2px 20px rgba(40,10,24,.2); }
 }
+
+
+/* VYRA campaign hero slider */
+.hero-slider { isolation: isolate; }
+.hero-slider .hero-slide {
+  z-index: -2;
+  opacity: 0;
+  transform: scale(1.035);
+  transition: opacity 900ms ease, transform 6500ms ease;
+  pointer-events: none;
+}
+.hero-slider .hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.hero-slider .hero-shade { z-index: -1; }
+.hero-slider .hero-copy,
+.hero-slider .hero-index,
+.hero-slider .hero-caption { z-index: 1; }
+.hero-slide-label {
+  display: block;
+  margin: -13px 0 18px;
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: rgba(255,244,239,.88);
+}
+.hero-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,244,239,.65);
+  border-radius: 50%;
+  background: rgba(49,20,34,.22);
+  color: #fff8f3;
+  backdrop-filter: blur(5px);
+  transition: background .2s, color .2s;
+}
+.hero-arrow:hover { background: #fbf4ef; color: #421b2c; }
+.hero-arrow-left { left: 22px; }
+.hero-arrow-right { right: 22px; }
+.hero-dots {
+  position: absolute;
+  z-index: 2;
+  bottom: 23px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.hero-dots button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,244,239,.55);
+  transition: width .2s, border-radius .2s, background .2s;
+}
+.hero-dots button.active {
+  width: 23px;
+  border-radius: 8px;
+  background: #fff8f3;
+}
+@media (max-width: 640px) {
+  .hero-arrow { width: 34px; height: 34px; top: 48%; }
+  .hero-arrow-left { left: 12px; }
+  .hero-arrow-right { right: 12px; }
+  .hero-dots { bottom: 52px; }
+  .hero-slide-label { margin: -10px 0 15px; font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider .hero-slide { transition: none; }
+}
