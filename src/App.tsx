@@ -31,7 +31,8 @@ function BrandMark() {
 }
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);\n  const [activeHero, setActiveHero] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeHero, setActiveHero] = useState(0);
   const [searchOpen, setSearchOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [saved, setSaved] = useState<number[]>([]);
