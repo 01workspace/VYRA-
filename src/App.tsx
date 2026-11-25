@@ -16,16 +16,16 @@ const looks: Look[] = [
   { name: 'Champagne Royale', line: 'THE SIGNATURE EMBELLISHED EDIT', colour: 'Champagne Gold', image: '/resources/vyra-champagne-royale.svg', alt: 'Champagne Royale, a VYRA occasion look with intricate champagne-toned embellishment' }
 ];
 const heroSlides = [
-  { alt: 'Black sculpted VYRA look photographed at the shoreline', label: 'THE NOIR EDIT', caption: 'CONFIDENCE IN EVERY DETAIL.' },
-  { alt: 'Three VYRA swim looks in burgundy, black and emerald', label: 'THE COLOR STORY', caption: 'THREE MOODS. ONE SIGNATURE.' },
-  { alt: 'A royal plum VYRA evening look at a celebration', label: 'THE ROYAL EDIT', caption: 'DRESS FOR THE MOMENT.' },
-  { alt: 'A champagne embellished VYRA couture look', label: 'THE CHAMPAGNE EDIT', caption: 'DETAILS THAT CATCH THE LIGHT.' },
-  { alt: 'A champagne VYRA look at an evening celebration', label: 'THE AFTER HOURS EDIT', caption: 'AN ENTRANCE THAT LINGERS.' },
-  { alt: 'A black embellished VYRA evening look', label: 'THE NOIR DETAIL', caption: 'QUIETLY UNFORGETTABLE.' },
-  { alt: 'An embellished black VYRA festive ensemble', label: 'THE EMBELLISHED EDIT', caption: 'MADE TO BE NOTICED.' },
-  { alt: 'A plum VYRA festive ensemble', label: 'THE PLUM EDIT', caption: 'A LITTLE MORE DRAMA.' },
-  { alt: 'A champagne VYRA couture look', label: 'THE GOLDEN EDIT', caption: 'GLOW IN EVERY ROOM.' },
-  { alt: 'A black lace VYRA evening ensemble', label: 'THE BLACK LACE EDIT', caption: 'CONFIDENCE AFTER DARK.' }
+  { image: '/resources/vyra-01-black-beach.jpg', alt: 'Black VYRA fashion look on a beach', label: 'THE NOIR EDIT', caption: 'CONFIDENCE IN EVERY DETAIL.' },
+  { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA fashion look on a sunlit coast', label: 'THE COLOR STORY', caption: 'THREE MOODS. ONE SIGNATURE.' },
+  { image: '/resources/vyra-05-purple-resort.jpg', alt: 'Purple VYRA resort fashion look', label: 'THE ROYAL EDIT', caption: 'DRESS FOR THE MOMENT.' },
+  { image: '/resources/vyra-06-white-poolside.jpg', alt: 'Ivory VYRA fashion look beside a pool', label: 'THE CHAMPAGNE EDIT', caption: 'DETAILS THAT CATCH THE LIGHT.' },
+  { image: '/resources/vyra-11-purple-sunlit.jpg', alt: 'Purple VYRA editorial in warm sunlight', label: 'THE AFTER HOURS EDIT', caption: 'AN ENTRANCE THAT LINGERS.' },
+  { image: '/resources/vyra-07-black-studio.jpg', alt: 'Black VYRA fashion look in a studio editorial', label: 'THE NOIR DETAIL', caption: 'QUIETLY UNFORGETTABLE.' },
+  { image: '/resources/vyra-13-black-resort.jpg', alt: 'Black VYRA resort fashion look', label: 'THE EMBELLISHED EDIT', caption: 'MADE TO BE NOTICED.' },
+  { image: '/resources/vyra-14-red-curvy-resort.jpg', alt: 'Red VYRA resort fashion look', label: 'THE PLUM EDIT', caption: 'A LITTLE MORE DRAMA.' },
+  { image: '/resources/vyra-12-white-pool.jpg', alt: 'Ivory VYRA look by the pool', label: 'THE GOLDEN EDIT', caption: 'GLOW IN EVERY ROOM.' },
+  { image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Emerald VYRA fashion look in a tropical garden', label: 'THE BLACK LACE EDIT', caption: 'CONFIDENCE AFTER DARK.' }
 ];
 const gallery = [
   { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA fashion editorial on a sunlit coast', caption: 'MADE FOR YOUR KIND OF CONFIDENCE.', action: 'DISCOVER THE EDIT' },
@@ -172,13 +172,16 @@ function App() {
 
       <main>
         <section className="hero hero-slider" aria-label="VYRA campaign">
-          {heroSlides.map((slide, index) => <div
-            key={slide.label}
+          {heroSlides.map((slide, index) => <img
+            key={slide.image}
             className={index === activeHero ? 'hero-image hero-slide active' : 'hero-image hero-slide'}
-            role="img"
-            aria-label={slide.alt}
+            src={slide.image}
+            alt={slide.alt}
             aria-hidden={index !== activeHero}
-            style={{backgroundPosition: `${index % 2 ? 79.8 : 20.2}% ${Math.floor(index / 2) * 25}%`}}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            fetchPriority={index === 0 ? 'high' : 'auto'}
+            decoding="async"
+            style={{objectPosition:'center 38%'}}
           />)}
           <div className="hero-shade"/>
           <div className="hero-copy"><div className="hero-monogram">V</div><h1>VYRA</h1><p>FEEL CONFIDENT. FEEL YOU.</p><span className="fine-rule"/><span className="hero-slide-label">{heroSlides[activeHero].label}</span><button className="outline-button" onClick={() => scrollTo('collection')}>EXPLORE THE COLLECTION <ArrowRight size={15}/></button></div>

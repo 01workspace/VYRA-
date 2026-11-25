@@ -358,9 +358,6 @@ body, .site { background: #f8f1ed; color: #3a1826; }
   transform: scale(1.035);
   transition: opacity 900ms ease, transform 6500ms ease;
   pointer-events: none;
-  background-image: url('/resources/vyra-banner-sprite.webp');
-  background-size: auto 500%;
-  background-repeat: no-repeat;
 }
 .hero-slider .hero-slide.active {
   opacity: 1;
