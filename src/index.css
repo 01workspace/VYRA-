@@ -287,3 +287,64 @@ a { color: inherit; text-decoration: none; }
   .occasion-copy h2 { font-size: 62px; }
   .occasion-description { margin: 19px 0; }
 }
+
+
+/* VYRA signature storefront art direction */
+:root {
+  color: #3a1826;
+  background: #f8f1ed;
+  --black: #321522;
+  --cream: #fbf4ef;
+  --muted: #806b70;
+  --line: rgba(75, 28, 48, .2);
+  --serif: 'Italiana', Georgia, serif;
+}
+body, .site { background: #f8f1ed; color: #3a1826; }
+.header {
+  background: #fbf4ef;
+  color: #421b2c;
+  border-bottom: 1px solid rgba(86, 35, 54, .18);
+}
+.brand-word { letter-spacing: .18em; }
+.nav a { font-size: 11px; letter-spacing: .1em; }
+.header-tools button { color: #421b2c; }
+.bag-tool i { background: #6e1938; color: #fff7f1; }
+.searchbar { background: #f1e3df; color: #421b2c; border-color: #dfc9c7; }
+.searchbar input { color: #421b2c; }
+.hero-shade {
+  background: linear-gradient(90deg, rgba(39, 13, 25, .72), rgba(39, 13, 25, .2) 48%, rgba(39, 13, 25, .03)),
+              linear-gradient(0deg, rgba(39, 13, 25, .24), transparent 45%);
+}
+.hero-copy h1 { letter-spacing: .07em; }
+.outline-button { border-color: rgba(255, 244, 239, .88); }
+.editorial-grid { background: #f8f1ed; }
+.editorial-overlay { background: linear-gradient(0deg, rgba(48, 17, 31, .72), transparent); }
+.collections-band { border-color: #f8f1ed; }
+.collections-copy { background: #f1e4df; color: #421b2c; border-color: #dec8c4; }
+.collections-copy .eyebrow, .eyebrow { color: #956176; }
+.collections-copy .short-rule { background: #8b4963; }
+.collection-section { background: #fbf5f1; color: #421b2c; }
+.section-heading > p { color: #806b70; }
+.collection-tools { color: #805d69; border-color: #dec9c6; }
+.product-photo { background: #e9d8d5; }
+.heart { color: #5a243b; border-color: rgba(90,36,59,.55); background: rgba(255,248,244,.78); }
+.heart.saved { color: #fff; background: #6e1938; }
+.quick-view { background: rgba(65, 24, 43, .86); border-color: rgba(255,255,255,.72); }
+.product-meta p, .product-meta > span { color: #8b6d78; }
+.add-preview { color: #54243a; border-color: #dfcbc8; }
+.manifesto-shade { background: linear-gradient(90deg,rgba(45,15,29,.78),rgba(45,15,29,.27) 55%,rgba(45,15,29,.04)); }
+.values { background: #6e1938; color: #fff5ef; }
+.footer { background: #321522; color: #fff5ef; border-color: rgba(255,245,239,.2); }
+.footer p, .footer > span { color: #e5cbd2; }
+.owner-link { color: #e5cbd2; }
+.toast { background: #6e1938; color: #fff7f1; }
+.occasion-lookbook { background: #f0dfdc; color: #421b2c; }
+.occasion-copy .eyebrow { color: #98647a; }
+.occasion-description { color: #765b66; }
+.occasion-details { border-color: #d6b8bc; color: #896b75; }
+.occasion-link { border-color: #6e1938; color: #6e1938; }
+@media (max-width: 640px) {
+  .nav { background: #fbf4ef; border-color: #e4cfcc; }
+  .hero { min-height: 560px; }
+  .hero-copy { text-shadow: 0 2px 20px rgba(40,10,24,.2); }
+}
