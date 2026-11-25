@@ -427,3 +427,27 @@ body, .site { background: #f8f1ed; color: #3a1826; }
 @media (prefers-reduced-motion: reduce) {
   .hero-slider .hero-slide { transition: none; }
 }
+
+
+/* Keep VYRA campaign photos in the visible hero stacking layer. */
+.hero-slider {
+  isolation: isolate;
+  position: relative;
+  background: #321522;
+}
+.hero-slider .hero-slide,
+.hero-slider .hero-slide.active {
+  z-index: 0;
+}
+.hero-slider .hero-shade {
+  z-index: 1;
+}
+.hero-slider .hero-copy,
+.hero-slider .hero-index,
+.hero-slider .hero-caption {
+  z-index: 2;
+}
+.hero-slider .hero-arrow,
+.hero-slider .hero-dots {
+  z-index: 3;
+}

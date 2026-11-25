@@ -18,14 +18,20 @@ const looks: Look[] = [
 const heroSlides = [
   { image: '/resources/vyra-01-black-beach.jpg', alt: 'Black VYRA fashion look on a beach', label: 'THE NOIR EDIT', caption: 'CONFIDENCE IN EVERY DETAIL.' },
   { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA fashion look on a sunlit coast', label: 'THE COLOR STORY', caption: 'THREE MOODS. ONE SIGNATURE.' },
+  { image: '/resources/vyra-03-blue-beach.jpg', alt: 'Sapphire blue VYRA fashion editorial beside the sea', label: 'THE TIDAL EDIT', caption: 'MAKE WAVES WITHOUT SAYING A WORD.' },
+  { image: '/resources/vyra-04-emerald-tropical.jpg', alt: 'Emerald VYRA fashion look in a tropical setting', label: 'THE BOTANICAL EDIT', caption: 'A BRIGHTER KIND OF BOLD.' },
   { image: '/resources/vyra-05-purple-resort.jpg', alt: 'Purple VYRA resort fashion look', label: 'THE ROYAL EDIT', caption: 'DRESS FOR THE MOMENT.' },
   { image: '/resources/vyra-06-white-poolside.jpg', alt: 'Ivory VYRA fashion look beside a pool', label: 'THE CHAMPAGNE EDIT', caption: 'DETAILS THAT CATCH THE LIGHT.' },
-  { image: '/resources/vyra-11-purple-sunlit.jpg', alt: 'Purple VYRA editorial in warm sunlight', label: 'THE AFTER HOURS EDIT', caption: 'AN ENTRANCE THAT LINGERS.' },
   { image: '/resources/vyra-07-black-studio.jpg', alt: 'Black VYRA fashion look in a studio editorial', label: 'THE NOIR DETAIL', caption: 'QUIETLY UNFORGETTABLE.' },
+  { image: '/resources/vyra-08-red-back-view.jpg', alt: 'Red VYRA resort fashion editorial from the back', label: 'THE RED CARPET EDIT', caption: 'EVERY ANGLE, YOURS.' },
+  { image: '/resources/vyra-09-blue-rocky-shore.jpg', alt: 'Blue VYRA fashion look on a rocky shoreline', label: 'THE COASTAL EDIT', caption: 'WHERE FREEDOM MEETS THE COAST.' },
+  { image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Emerald VYRA fashion look in a tropical garden', label: 'THE EMERALD EDIT', caption: 'A NATURAL KIND OF STATEMENT.' },
+  { image: '/resources/vyra-11-purple-sunlit.jpg', alt: 'Purple VYRA editorial in warm sunlight', label: 'THE AFTER HOURS EDIT', caption: 'AN ENTRANCE THAT LINGERS.' },
+  { image: '/resources/vyra-12-white-pool.jpg', alt: 'Ivory VYRA look by the pool', label: 'THE GOLDEN EDIT', caption: 'GLOW IN EVERY ROOM.' },
   { image: '/resources/vyra-13-black-resort.jpg', alt: 'Black VYRA resort fashion look', label: 'THE EMBELLISHED EDIT', caption: 'MADE TO BE NOTICED.' },
   { image: '/resources/vyra-14-red-curvy-resort.jpg', alt: 'Red VYRA resort fashion look', label: 'THE PLUM EDIT', caption: 'A LITTLE MORE DRAMA.' },
-  { image: '/resources/vyra-12-white-pool.jpg', alt: 'Ivory VYRA look by the pool', label: 'THE GOLDEN EDIT', caption: 'GLOW IN EVERY ROOM.' },
-  { image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Emerald VYRA fashion look in a tropical garden', label: 'THE BLACK LACE EDIT', caption: 'CONFIDENCE AFTER DARK.' }
+  { image: '/resources/vyra-15-blue-kneeling.jpg', alt: 'Blue VYRA fashion editorial by the water', label: 'THE BLUE HOUR EDIT', caption: 'OWN EVERY MOMENT.' },
+  { image: '/resources/vyra-16-emerald-portrait.jpg', alt: 'Emerald VYRA editorial portrait', label: 'THE SIGNATURE EDIT', caption: 'AN ICON IN THE MAKING.' }
 ];
 const gallery = [
   { image: '/resources/vyra-02-red-coast.jpg', alt: 'Red VYRA fashion editorial on a sunlit coast', caption: 'MADE FOR YOUR KIND OF CONFIDENCE.', action: 'DISCOVER THE EDIT' },
@@ -178,7 +184,7 @@ function App() {
             src={slide.image}
             alt={slide.alt}
             aria-hidden={index !== activeHero}
-            loading={index === 0 ? 'eager' : 'lazy'}
+            loading="eager"
             fetchPriority={index === 0 ? 'high' : 'auto'}
             decoding="async"
             style={{objectPosition:'center 38%'}}
