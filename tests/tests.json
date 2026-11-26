@@ -12,10 +12,10 @@
     "description": "Checks the editorial homepage, collection cards, and search results.",
     "steps": [
       "Open the VYRA homepage",
-      "Open search and enter Solstice",
+      "Open search and enter Ruby Reverie",
       "Search for a term with no matches"
     ],
-    "expected": "The collection filters to the matching look and shows a clear empty state for an unmatched search."
+    "expected": "The collection filters to Ruby Reverie and shows a clear empty state for an unmatched search."
   },
   {
     "name": "Submit a customer availability request",
@@ -87,5 +87,39 @@
       "Sign in as the owner and open the order dashboard"
     ],
     "expected": "The dashboard shows the customer's contact details and both requested looks."
+  },
+  {
+    "name": "Open a product detail page and request availability",
+    "description": "Verifies a customer can open a product detail page, inspect its image gallery, and add the product to the availability request bag.",
+    "viewport": "desktop",
+    "covers": [
+      "product detail page",
+      "product image gallery",
+      "product-to-bag flow",
+      "shareable product route"
+    ],
+    "steps": [
+      "Open the VYRA collection",
+      "Open Ruby Reverie using View Product",
+      "Select another gallery image",
+      "Choose Request Availability"
+    ],
+    "expected": "The Ruby Reverie detail page shows its images and product information, then the availability bag opens with Ruby Reverie included."
+  },
+  {
+    "name": "Browse product details on mobile",
+    "description": "Verifies product detail content and gallery controls remain usable on a mobile viewport.",
+    "viewport": "mobile",
+    "covers": [
+      "responsive product detail page",
+      "mobile product gallery"
+    ],
+    "steps": [
+      "Open the VYRA collection on mobile",
+      "Open Amethyst Afterglow product details",
+      "Select the second product image",
+      "Close the product page"
+    ],
+    "expected": "The product detail page stacks the gallery and details vertically, the second image can be selected, and the customer returns to the collection."
   }
 ]
