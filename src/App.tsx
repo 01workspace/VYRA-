@@ -5,16 +5,19 @@ import {
   X, Diamond, ShieldCheck, Globe2, Trash2, LockKeyhole, LogOut
 } from 'lucide-react';
 
-type Look = { name: string; line: string; colour: string; image: string; alt: string };
+type Look = { name: string; line: string; colour: string; image: string; alt: string; gallery: string[]; description: string; details: string[] };
 type Order = { id: string; name: string; phone: string; city: string; address: string; notes?: string; items: { name: string; colour: string }[]; status: string; createdAt: string };
 
 const looks: Look[] = [
-  { name: 'Noir Muse', line: 'THE SCULPTED EDIT', colour: 'Midnight', image: '/resources/vyra-07-black-studio.jpg', alt: 'Adult model wearing a sculptural black VYRA fashion look in a studio editorial' },
-  { name: 'Tidal Form', line: 'THE COASTAL EDIT', colour: 'Lagoon', image: '/resources/vyra-09-blue-rocky-shore.jpg', alt: 'Adult model wearing a blue VYRA fashion look on a rocky shoreline' },
-  { name: 'Garden Muse', line: 'THE BOTANICAL EDIT', colour: 'Emerald', image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Adult model wearing an emerald VYRA fashion look in a tropical garden' },
-  { name: 'Ivory Hour', line: 'THE LIGHT STUDY', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model wearing an ivory VYRA fashion look beside a pool' },
-  { name: 'Noir Royale', line: 'THE GOLDEN HOUR SWIM EDIT', colour: 'Black & Gold', image: '/resources/noir-royale-product.webp', alt: 'Noir Royale black bikini with polished gold ring hardware, shown from front, back and detail angles beside a pool at golden hour' },
-  { name: 'Champagne Royale', line: 'THE SIGNATURE EMBELLISHED EDIT', colour: 'Champagne Gold', image: '/resources/vyra-champagne-royale.svg', alt: 'Champagne Royale, a VYRA occasion look with intricate champagne-toned embellishment' }
+  { name: 'Noir Muse', line: 'THE SCULPTED EDIT', colour: 'Midnight', image: '/resources/vyra-07-black-studio.jpg', alt: 'Adult model wearing a sculptural black VYRA fashion look in a studio editorial', gallery: ['/resources/vyra-07-black-studio.jpg','/resources/vyra-13-black-resort.jpg','/resources/vyra-01-black-beach.jpg'], description: 'A confident, sculptural black look with a clean editorial point of view.', details: ['Sculptural black styling','Midnight colour story','Size and availability confirmed on request'] },
+  { name: 'Tidal Form', line: 'THE COASTAL EDIT', colour: 'Lagoon', image: '/resources/vyra-09-blue-rocky-shore.jpg', alt: 'Adult model wearing a blue VYRA fashion look on a rocky shoreline', gallery: ['/resources/vyra-09-blue-rocky-shore.jpg','/resources/vyra-15-blue-kneeling.jpg','/resources/vyra-03-blue-beach.jpg'], description: 'A vivid coastal statement inspired by clear water and open horizons.', details: ['Lagoon blue colour story','Coastal-inspired styling','Size and availability confirmed on request'] },
+  { name: 'Garden Muse', line: 'THE BOTANICAL EDIT', colour: 'Emerald', image: '/resources/vyra-10-emerald-garden.jpg', alt: 'Adult model wearing an emerald VYRA fashion look in a tropical garden', gallery: ['/resources/vyra-10-emerald-garden.jpg','/resources/vyra-16-emerald-portrait.jpg','/resources/vyra-04-emerald-tropical.jpg'], description: 'A rich emerald look that brings a fresh, botanical mood to the VYRA edit.', details: ['Emerald colour story','Botanical-inspired styling','Size and availability confirmed on request'] },
+  { name: 'Ivory Hour', line: 'THE LIGHT STUDY', colour: 'Ivory', image: '/resources/vyra-12-white-pool.jpg', alt: 'Adult model wearing an ivory VYRA fashion look beside a pool', gallery: ['/resources/vyra-12-white-pool.jpg','/resources/vyra-06-white-poolside.jpg'], description: 'An understated ivory look with a light, polished resort mood.', details: ['Soft ivory colour story','Light, refined styling','Size and availability confirmed on request'] },
+  { name: 'Noir Royale', line: 'THE GOLDEN HOUR SWIM EDIT', colour: 'Black & Gold', image: '/resources/noir-royale-product.webp', alt: 'Noir Royale black bikini with polished gold ring hardware, shown from front, back and detail angles beside a pool at golden hour', gallery: ['/resources/noir-royale-product.webp'], description: 'A black VYRA swim design finished with polished gold ring hardware. The supplied product image presents front, back and detail views together.', details: ['Black with gold-tone ring hardware','Front, back and detail views in the product image','Size and availability confirmed on request'] },
+  { name: 'Champagne Royale', line: 'THE SIGNATURE EMBELLISHED EDIT', colour: 'Champagne Gold', image: '/resources/vyra-champagne-royale.svg', alt: 'Champagne Royale, a VYRA occasion look with intricate champagne-toned embellishment', gallery: ['/resources/vyra-champagne-royale.svg','/resources/vyra-lookbook-2026.png'], description: 'A statement occasion concept with intricate champagne-toned embellishment.', details: ['Champagne gold palette','Embellished occasion styling','Size and availability confirmed on request'] },
+  { name: 'Ruby Reverie', line: 'THE RED COAST EDIT', colour: 'Ruby Red', image: '/resources/vyra-02-red-coast.jpg', alt: 'Adult model wearing a red VYRA fashion look on a sunlit coast', gallery: ['/resources/vyra-02-red-coast.jpg','/resources/vyra-08-red-back-view.jpg','/resources/vyra-14-red-curvy-resort.jpg'], description: 'A bold red edit with striking resort energy and a confident silhouette.', details: ['Ruby red colour story','Three campaign angles','Size and availability confirmed on request'] },
+  { name: 'Amethyst Afterglow', line: 'THE AFTER HOURS EDIT', colour: 'Amethyst', image: '/resources/vyra-05-purple-resort.jpg', alt: 'Adult model wearing a purple VYRA resort fashion look', gallery: ['/resources/vyra-05-purple-resort.jpg','/resources/vyra-11-purple-sunlit.jpg'], description: 'A rich purple resort look made for golden light and after-hours confidence.', details: ['Amethyst purple colour story','Two campaign angles','Size and availability confirmed on request'] },
+  { name: 'Sapphire Muse', line: 'THE BLUE HOUR EDIT', colour: 'Sapphire', image: '/resources/vyra-03-blue-beach.jpg', alt: 'Adult model wearing a sapphire blue VYRA fashion look beside the sea', gallery: ['/resources/vyra-03-blue-beach.jpg','/resources/vyra-15-blue-kneeling.jpg','/resources/vyra-09-blue-rocky-shore.jpg'], description: 'A saturated sapphire statement inspired by the blue hour beside the sea.', details: ['Sapphire blue colour story','Three campaign angles','Size and availability confirmed on request'] }
 ];
 const heroSlides = [
   { image: '/resources/vyra-01-black-beach.jpg', alt: 'Black VYRA fashion look on a beach', label: 'THE NOIR EDIT', caption: 'CONFIDENCE IN EVERY DETAIL.' },
@@ -70,6 +73,8 @@ function App() {
   });
   const [notice, setNotice] = useState('');
   const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [selectedLook, setSelectedLook] = useState<Look | null>(null);
+  const [activeProductImage, setActiveProductImage] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [adminOpen, setAdminOpen] = useState(window.location.hash === '#admin');
   const [user, setUser] = useState<{ email?: string; name?: string } | null>(null);
@@ -82,9 +87,19 @@ function App() {
       try { setUser(await auth.getUser()); } catch { setUser(null); }
     };
     void restore();
-    const onHash = () => setAdminOpen(window.location.hash === '#admin');
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
+    const syncHash = () => {
+      const hash = window.location.hash;
+      setAdminOpen(hash === '#admin');
+      if (hash.startsWith('#product/')) {
+        const slug = decodeURIComponent(hash.slice(9));
+        const product = looks.find(item => item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug);
+        setSelectedLook(product || null);
+        if (product) setActiveProductImage(product.gallery[0] || product.image);
+      } else setSelectedLook(null);
+    };
+    syncHash();
+    window.addEventListener('hashchange', syncHash);
+    return () => window.removeEventListener('hashchange', syncHash);
   }, []);
 
   useEffect(() => {
@@ -118,6 +133,22 @@ function App() {
     (item.name + ' ' + item.line + ' ' + item.colour).toLowerCase().includes(search.toLowerCase())
   ), [search]);
   const cartLooks = bag.map(name => looks.find(item => item.name === name)).filter((item): item is Look => Boolean(item));
+
+  const openProduct = (item: Look) => {
+    setSelectedLook(item);
+    setActiveProductImage(item.gallery[0] || item.image);
+    const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    window.location.hash = 'product/' + encodeURIComponent(slug);
+  };
+  const closeProduct = () => {
+    setSelectedLook(null);
+    if (window.location.hash.startsWith('#product/')) window.history.replaceState(null, '', window.location.pathname + window.location.search);
+  };
+  const requestProduct = (item: Look) => {
+    addToBag(item.name);
+    closeProduct();
+    setCheckoutOpen(true);
+  };
 
   const addToBag = (name: string) => {
     setBag(current => [...current, name]);
@@ -234,10 +265,10 @@ function App() {
               return <article className="product-card" key={item.name}>
                 <div className="product-photo" style={item.name === 'Noir Royale' ? { height: 'auto', aspectRatio: '1 / 1' } : undefined}><img src={item.image} alt={item.alt} style={item.name === 'Noir Royale' ? { objectFit: 'contain', objectPosition: 'center', transform: 'none' } : {objectPosition:'50% 12%'}}/>
                   <button className={saved.includes(index) ? 'heart saved' : 'heart'} onClick={() => setSaved(current => current.includes(index) ? current.filter(n => n !== index) : [...current,index])} aria-label={saved.includes(index) ? 'Remove saved look' : 'Save look'}><Heart size={18} fill={saved.includes(index) ? 'currentColor' : 'none'}/></button>
-                  <button className="quick-view" onClick={() => addToBag(item.name)}>ADD THIS LOOK <ArrowUpRight size={14}/></button>
+                  <button className="quick-view" onClick={() => openProduct(item)}>VIEW PRODUCT <ArrowUpRight size={14}/></button>
                 </div>
-                <div className="product-meta"><div><h3>{item.name}</h3><p>{item.line}</p></div><span>{item.colour}</span></div>
-                <button className="add-preview" onClick={() => addToBag(item.name)}>REQUEST AVAILABILITY <ArrowRight size={13}/></button>
+                <button className="product-meta product-meta-button" onClick={() => openProduct(item)}><span><h3>{item.name}</h3><p>{item.line}</p></span><span>{item.colour}</span></button>
+                <button className="add-preview" onClick={() => openProduct(item)}>VIEW DETAILS <ArrowRight size={13}/></button>
               </article>;
             })}
           </div>
@@ -253,6 +284,33 @@ function App() {
       </main>
 
       <footer className="footer" id="contact"><BrandMark/><p>FEEL CONFIDENT. FEEL YOU.</p><span className="footer-contact">DESIGNED FOR YOUR OWN KIND OF EXPRESSION</span><span>© VYRA · THE FREEDOM EDITION</span><button className="owner-link" onClick={openAdmin}><LockKeyhole size={12}/> OWNER</button></footer>
+
+
+      {selectedLook && <div className="product-detail-backdrop" role="presentation" onMouseDown={e => { if (e.target === e.currentTarget) closeProduct(); }}>
+        <section className="product-detail" role="dialog" aria-modal="true" aria-labelledby="product-title">
+          <div className="product-detail-top"><a href="#collection" onClick={e => { e.preventDefault(); closeProduct(); scrollTo('collection'); }}>VYRA / THE COLLECTION</a><button onClick={closeProduct} aria-label="Close product page"><X/></button></div>
+          <div className="product-detail-layout">
+            <div className="product-gallery">
+              <div className="product-main-image"><img src={activeProductImage || selectedLook.image} alt={selectedLook.alt} /></div>
+              <div className="product-thumbnails" role="group" aria-label="Product images">
+                {selectedLook.gallery.map((src,index) => <button key={src} className={activeProductImage === src ? 'active' : ''} onClick={() => setActiveProductImage(src)} aria-label={'Show product image ' + (index + 1)}><img src={src} alt="" /></button>)}
+              </div>
+            </div>
+            <div className="product-detail-copy">
+              <p className="eyebrow">VYRA · THE SIGNATURE EDIT</p>
+              <h2 id="product-title">{selectedLook.name}</h2>
+              <p className="product-detail-line">{selectedLook.line}</p>
+              <p className="product-detail-description">{selectedLook.description}</p>
+              <div className="product-detail-colour"><span>COLOUR</span><strong>{selectedLook.colour}</strong></div>
+              <div className="product-detail-notes"><span>DESIGN NOTES</span><ul>{selectedLook.details.map(detail => <li key={detail}>{detail}</li>)}</ul></div>
+              <p className="product-price-note">Price, available sizes and delivery details are confirmed by our team when you request availability.</p>
+              <button className="solid-button product-request-button" onClick={() => requestProduct(selectedLook)}>REQUEST AVAILABILITY <ArrowRight size={15}/></button>
+              <p className="product-detail-footnote">No payment is taken on this request. Our team will contact you to confirm the details.</p>
+            </div>
+          </div>
+          <div className="product-detail-bottom"><span>THE VYRA DESIGN LANGUAGE</span><span>EXPRESSION · COVERAGE · COMFORT</span></div>
+        </section>
+      </div>}
 
       {checkoutOpen && <div className="modal-backdrop" role="presentation" onMouseDown={e => {if (e.target === e.currentTarget) setCheckoutOpen(false);}}>
         <section className="store-modal" role="dialog" aria-modal="true" aria-labelledby="bag-title">
