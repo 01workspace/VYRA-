@@ -94,17 +94,20 @@
     "viewport": "desktop",
     "covers": [
       "product detail page",
-      "product image gallery",
+      "product image gallery with four images",
+      "size selector XS to XXL",
+      "Order Now action",
       "product-to-bag flow",
       "shareable product route"
     ],
     "steps": [
       "Open the VYRA collection",
       "Open Ruby Reverie using View Product",
-      "Select another gallery image",
-      "Choose Request Availability"
+      "Verify four gallery images",
+      "Choose size XL",
+      "Choose Order Now"
     ],
-    "expected": "The Ruby Reverie detail page shows its images and product information, then the availability bag opens with Ruby Reverie included."
+    "expected": "The Ruby Reverie detail page shows four gallery images and an XS–XXL size selector; Order Now adds the selected size to the request bag."
   },
   {
     "name": "Browse product details on mobile",
