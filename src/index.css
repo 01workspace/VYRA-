@@ -539,3 +539,6 @@ body, .site { background: #f8f1ed; color: #3a1826; }
   .product-detail-description { font-size: 19px; }
   .product-detail-bottom { flex-direction: column; gap: 8px; }
 }
+
+.product-size-picker { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:17px 0; border-top:1px solid #dfcbc8; color:#8b6d78; font-size:9px; letter-spacing:.16em; }
+.product-size-picker select { min-width:112px; padding:12px 14px; border:1px solid #cdb4bd; background:#fffaf7; color:#421b2c; font:inherit; letter-spacing:.12em; }
