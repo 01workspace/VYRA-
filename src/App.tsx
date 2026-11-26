@@ -179,23 +179,22 @@ function App() {
 
       <main>
         <section className="hero hero-slider" aria-label="VYRA campaign">
-          {heroSlides.map((slide, index) => <div
-            key={slide.image}
-            className={index === activeHero ? 'hero-slide active' : 'hero-slide'}
-            aria-hidden={index !== activeHero}
-          >
-            <img className="hero-slide-backdrop" src={slide.image} alt="" loading="eager" decoding="async"/>
-            <img
-              className="hero-slide-photo"
-              src={slide.image}
-              alt={slide.alt}
-              width={250}
-              height={380}
-              loading="eager"
-              fetchPriority={index === 0 ? 'high' : 'auto'}
-              decoding="async"
-            />
-          </div>)}
+          <div className="hero-track" style={{ '--hero-offset': activeHero } as React.CSSProperties}>
+            {[...heroSlides, ...heroSlides].map((slide, index) => <figure
+              key={slide.image + index}
+              className={index % heroSlides.length === activeHero ? 'hero-frame active' : 'hero-frame'}
+            >
+              <img
+                src={slide.image}
+                alt={index < heroSlides.length ? slide.alt : ''}
+                width={248}
+                height={380}
+                loading={index < 6 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+                decoding="async"
+              />
+            </figure>)}
+          </div>
           <div className="hero-shade"/>
           <div className="hero-copy"><div className="hero-monogram">V</div><h1>VYRA</h1><p>FEEL CONFIDENT. FEEL YOU.</p><span className="fine-rule"/><span className="hero-slide-label">{heroSlides[activeHero].label}</span><button className="outline-button" onClick={() => scrollTo('collection')}>EXPLORE THE COLLECTION <ArrowRight size={15}/></button></div>
           <button className="hero-arrow hero-arrow-left" aria-label="Previous campaign image" onClick={() => setActiveHero(current => (current - 1 + heroSlides.length) % heroSlides.length)}><ChevronLeft/></button>

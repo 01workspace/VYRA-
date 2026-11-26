@@ -454,45 +454,45 @@ body, .site { background: #f8f1ed; color: #3a1826; }
 
 
 /*
-  The campaign photos are small portrait files (~250x380). Stretching them
-  across the full-width banner upscaled them ~6x and cropped heads and feet,
-  so each slide now shows the photo sharp at its native aspect ratio over a
-  soft blurred fill of the same image.
+  The campaign photos are small portrait files (248x380). Instead of
+  stretching one across the whole banner (pixelated, cropped), the banner is
+  a full-width strip of complete, uncropped photos sized close to native
+  resolution. The banner height follows the photo aspect ratio.
 */
-.hero-slider { color: #fbf4ef; }
-.hero-slider .hero-slide {
+.hero.hero-slider {
+  --hero-visible: 4;
+  color: #fbf4ef;
+  height: calc(100vw / var(--hero-visible) * 380 / 248);
+  min-height: 0;
+  max-height: none;
+}
+.hero-track {
   position: absolute;
   inset: 0;
-  overflow: hidden;
+  z-index: 0;
+  display: flex;
+  transform: translateX(calc(var(--hero-offset) * -100% / var(--hero-visible)));
+  transition: transform 900ms cubic-bezier(.65, 0, .35, 1);
 }
-.hero-slide-backdrop {
-  position: absolute;
-  inset: -60px;
-  width: calc(100% + 120px);
-  height: calc(100% + 120px);
+.hero-frame {
+  flex: 0 0 calc(100% / var(--hero-visible));
+  height: 100%;
+  margin: 0;
+  border-right: 2px solid #321522;
+}
+.hero-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  filter: blur(34px) saturate(1.15) brightness(.62);
 }
-.hero-slide-photo {
-  position: absolute;
-  top: 46%;
-  right: clamp(84px, 11vw, 190px);
-  transform: translateY(-50%);
-  height: 80%;
-  max-height: 540px;
-  width: auto;
-  aspect-ratio: 250 / 380;
-  object-fit: cover;
-  border: 1px solid rgba(255, 244, 239, .35);
-  box-shadow: 0 30px 60px -20px rgba(20, 6, 12, .65);
-}
+@media (max-width: 1280px) { .hero.hero-slider { --hero-visible: 3; } }
+@media (max-width: 900px) { .hero.hero-slider { --hero-visible: 2; } }
 @media (max-width: 640px) {
-  .hero-slide-photo {
-    top: 22px;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 48%;
-  }
+  .hero.hero-slider { --hero-visible: 1; }
+  .hero-frame { border-right: 0; }
   .hero-slider .hero-monogram { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-track { transition: none; }
 }
