@@ -6,7 +6,8 @@ import {
 } from 'lucide-react';
 
 type Look = { name: string; line: string; colour: string; image: string; alt: string; gallery: string[]; description: string; details: string[] };
-type Order = { id: string; name: string; phone: string; city: string; address: string; notes?: string; items: { name: string; colour: string }[]; status: string; createdAt: string };
+type CartItem = { name: string; size: string };
+type Order = { id: string; name: string; phone: string; city: string; address: string; notes?: string; items: { name: string; colour: string; size: string }[]; status: string; createdAt: string };
 
 const looks: Look[] = [
   { name: 'Noir Muse', line: 'THE SCULPTED EDIT', colour: 'Midnight', image: '/resources/vyra-07-black-studio.jpg', alt: 'Adult model wearing a sculptural black VYRA fashion look in a studio editorial', gallery: ['/resources/vyra-07-black-studio.jpg','/resources/vyra-13-black-resort.jpg','/resources/vyra-01-black-beach.jpg'], description: 'A confident, sculptural black look with a clean editorial point of view.', details: ['Sculptural black styling','Midnight colour story','Size and availability confirmed on request'] },
@@ -60,13 +61,14 @@ function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [search, setSearch] = useState('');
   const [saved, setSaved] = useState<number[]>([]);
-  const [bag, setBag] = useState<string[]>(() => {
+  const [bag, setBag] = useState<CartItem[]>(() => {
     try {
       const stored = window.localStorage.getItem('vyra-bag');
       const parsed: unknown = stored ? JSON.parse(stored) : [];
-      return Array.isArray(parsed) ? parsed.filter((name): name is string => typeof name === 'string' && looks.some(look => look.name === name)) : [];
+      return Array.isArray(parsed) ? parsed.map((item: any) => typeof item === 'string' ? { name: item, size: 'M' } : item).filter((item: any) => item && typeof item.name === 'string' && typeof item.size === 'string' && looks.some(look => look.name === item.name)) : [];
     } catch { return []; }
   });
+  const [selectedSize, setSelectedSize] = useState('M');
   const [requestId, setRequestId] = useState(() => {
     try { return window.localStorage.getItem('vyra-request-id') || crypto.randomUUID(); }
     catch { return crypto.randomUUID(); }
@@ -132,7 +134,7 @@ function App() {
   const visibleLooks = useMemo(() => looks.filter(item =>
     (item.name + ' ' + item.line + ' ' + item.colour).toLowerCase().includes(search.toLowerCase())
   ), [search]);
-  const cartLooks = bag.map(name => looks.find(item => item.name === name)).filter((item): item is Look => Boolean(item));
+  const cartLooks = bag.map(entry => ({ ...looks.find(item => item.name === entry.name)!, size: entry.size })).filter((item): item is Look & { size: string } => Boolean(item.name));
 
   const openProduct = (item: Look) => {
     setSelectedLook(item);
@@ -145,14 +147,14 @@ function App() {
     if (window.location.hash.startsWith('#product/')) window.history.replaceState(null, '', window.location.pathname + window.location.search);
   };
   const requestProduct = (item: Look) => {
-    addToBag(item.name);
+    addToBag(item.name, selectedSize);
     closeProduct();
     setCheckoutOpen(true);
   };
 
-  const addToBag = (name: string) => {
-    setBag(current => [...current, name]);
-    notify(name + ' added to your bag.');
+  const addToBag = (name: string, size = 'M') => {
+    setBag(current => [...current, { name, size }]);
+    notify(name + ' · size ' + size + ' added to your bag.');
   };
   const removeFromBag = (index: number) => setBag(current => current.filter((_, i) => i !== index));
 
@@ -163,7 +165,7 @@ function App() {
     try {
       const { data } = await api.post('/api/orders', {
         requestId, ...form,
-        items: cartLooks.map(item => ({ name: item.name, colour: item.colour }))
+        items: cartLooks.map(item => ({ name: item.name, colour: item.colour, size: item.size }))
       });
       setBag([]);
       setRequestId(crypto.randomUUID());
@@ -302,9 +304,10 @@ function App() {
               <p className="product-detail-line">{selectedLook.line}</p>
               <p className="product-detail-description">{selectedLook.description}</p>
               <div className="product-detail-colour"><span>COLOUR</span><strong>{selectedLook.colour}</strong></div>
+              <label className="product-size-picker">SELECT SIZE<select value={selectedSize} onChange={e => setSelectedSize(e.target.value)}>{['XS','S','M','L','XL','XXL'].map(size => <option key={size} value={size}>{size}</option>)}</select></label>
               <div className="product-detail-notes"><span>DESIGN NOTES</span><ul>{selectedLook.details.map(detail => <li key={detail}>{detail}</li>)}</ul></div>
               <p className="product-price-note">Price, available sizes and delivery details are confirmed by our team when you request availability.</p>
-              <button className="solid-button product-request-button" onClick={() => requestProduct(selectedLook)}>REQUEST AVAILABILITY <ArrowRight size={15}/></button>
+              <button className="solid-button product-request-button" onClick={() => requestProduct(selectedLook)}>ORDER NOW <ArrowRight size={15}/></button>
               <p className="product-detail-footnote">No payment is taken on this request. Our team will contact you to confirm the details.</p>
             </div>
           </div>
@@ -316,7 +319,7 @@ function App() {
         <section className="store-modal" role="dialog" aria-modal="true" aria-labelledby="bag-title">
           <div className="modal-head"><div><p className="eyebrow">YOUR VYRA EDIT</p><h2 id="bag-title">YOUR BAG <span>({cartLooks.length})</span></h2></div><button onClick={() => setCheckoutOpen(false)} aria-label="Close bag"><X/></button></div>
           {cartLooks.length === 0 ? <div className="bag-empty"><ShoppingBag size={28}/><p>Your bag is waiting for a little freedom.</p><button className="solid-button" onClick={() => {setCheckoutOpen(false);scrollTo('collection');}}>EXPLORE THE COLLECTION</button></div> :
-            <><div className="bag-items">{cartLooks.map((item,index) => <div className="bag-item" key={item.name + index}><img src={item.image} alt={item.alt}/><div><h3>{item.name}</h3><p>{item.colour} · Availability on request</p><button onClick={() => removeFromBag(index)}><Trash2 size={13}/> REMOVE</button></div></div>)}</div>
+            <><div className="bag-items">{cartLooks.map((item,index) => <div className="bag-item" key={item.name + index}><img src={item.image} alt={item.alt}/><div><h3>{item.name}</h3><p>{item.colour} · Size {item.size} · Availability on request</p><button onClick={() => removeFromBag(index)}><Trash2 size={13}/> REMOVE</button></div></div>)}</div>
             <p className="order-note">This is an availability request, not a paid order. Our team will confirm product details, pricing and delivery before you commit.</p>
             <form className="checkout-form" onSubmit={submitOrder}><h3>WHERE CAN WE REACH YOU?</h3>
               <label>Full name<input required minLength={2} maxLength={80} value={form.name} onChange={e=>setForm({...form,name:e.target.value})} autoComplete="name"/></label>
