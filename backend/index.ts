@@ -1,6 +1,6 @@
 import { db, json, error, router, requireAuth, requireRole } from '@appdeploy/sdk';
 
-type OrderItem = { name: string; colour: string };
+type OrderItem = { name: string; colour: string; size: string };
 type OrderRecord = {
   id: string;
   name: string;
@@ -28,8 +28,8 @@ export const handler = router({
     const rawItems = Array.isArray(body.items) ? body.items : [];
     const items = rawItems.slice(0, 12).map((value) => {
       const item = (value || {}) as Record<string, unknown>;
-      return { name: clean(item.name, 60), colour: clean(item.colour, 40) };
-    }).filter(item => item.name && item.colour);
+      return { name: clean(item.name, 60), colour: clean(item.colour, 40), size: clean(item.size, 8) };
+    }).filter(item => item.name && item.colour && ['XS','S','M','L','XL','XXL'].includes(item.size));
     if (!/^[a-zA-Z0-9-]{12,80}$/.test(requestId) || name.length < 2 || phone.length < 7 || !city || !address || items.length === 0) {
       return error('Please provide valid contact and delivery details and at least one look.', 400);
     }
